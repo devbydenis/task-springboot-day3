@@ -48,6 +48,7 @@ public class MataPelajaranController {
             MataPelajaranDto mataPelajaranDto = new MataPelajaranDto();
             mataPelajaranDto.setId(mataPelajaran.getId());
             mataPelajaranDto.setNama(mataPelajaran.getNama());
+            mataPelajaranDto.setDeskripsi(mataPelajaran.getDeskripsi());
             return mataPelajaranDto;
         }
         throw new RuntimeException("Data mata pelajaran tidak ditemukan");
@@ -59,8 +60,16 @@ public class MataPelajaranController {
         if (mataPelajaran == null) {
             return "Mata pelajaran dengan id " + request.id() + " Tidak ditemukan";
         } else {
-            mataPelajaran.setNama(request.nama());
-            mataPelajaran.setDeskripsi(request.deskripsi());
+            mataPelajaran.setNama(
+                    request.nama() == null
+                            ? mataPelajaran.getNama()
+                            : request.nama()
+            );
+            mataPelajaran.setDeskripsi(
+                    request.deskripsi() == null
+                            ? mataPelajaran.getDeskripsi()
+                            : request.deskripsi()
+            );
             mataPelajaran.setModifiedDate(LocalDateTime.now());
             mataPelajaranRepository.save(mataPelajaran);
             return "Berhasil mengubah data";
@@ -71,7 +80,7 @@ public class MataPelajaranController {
     public String deleteMataPelajaran(@RequestParam Integer id){
         var mataPelajaran = mataPelajaranRepository.findById(id).orElse(null);
         if (mataPelajaran == null) {
-            return "Mata pelajaran dengan id " + id + "tidak ditemukan";
+            return "Mata pelajaran dengan id " + id + " tidak ditemukan";
         } else {
             mataPelajaranRepository.deleteById(id);
             return "Berhasil menghapus mata pelajaran";
