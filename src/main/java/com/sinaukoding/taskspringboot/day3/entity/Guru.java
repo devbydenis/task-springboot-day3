@@ -25,15 +25,12 @@ public class Guru {
     private UUID id;
 
     @Column(nullable = false)
-    @NotBlank(message = "Nama wajib diisi")
     private String nama;
 
     @Column(nullable = false, unique = true)
-    @NotBlank(message = "NIP wajib diisi")
     private Integer nip;
 
     @Column(nullable = false, unique = true)
-    @NotBlank(message = "Nomor Hp wajib diisi")
     private String nomorHp;
 
     private String alamat;
