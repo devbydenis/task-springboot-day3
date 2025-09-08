@@ -1,6 +1,7 @@
 package com.sinaukoding.taskspringboot.day3.entity;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
 import lombok.*;
 
 import java.time.LocalDateTime;
@@ -22,6 +23,7 @@ public class MataPelajaran {
     private Integer id;
 
     @Column(nullable = false, unique = true)
+    @NotBlank(message = "Nama tidak boleh kosong")
     private String nama;
 
     private String deskripsi;
