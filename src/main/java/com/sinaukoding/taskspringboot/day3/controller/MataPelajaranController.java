@@ -18,7 +18,7 @@ public class MataPelajaranController {
     private final MataPelajaranRepository mataPelajaranRepository;
 
     @PostMapping("add-mata-pelajaran")
-    public String addStudent(@RequestBody MataPelajaranRequestRecord request) {
+    public String addMataPelajaran(@RequestBody MataPelajaranRequestRecord request) {
         var mataPelajaran = new MataPelajaran();
         mataPelajaran.setNama(request.nama());
         mataPelajaran.setDeskripsi(request.deskripsi());

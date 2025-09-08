@@ -12,8 +12,8 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @Entity
 @Table(name = "m_mata_pelajaran", indexes = {
-        @Index(name = "idx_student_created_date", columnList = "createdDate"),
-        @Index(name = "idx_student_modified_date", columnList = "modifiedDate")
+        @Index(name = "idx_mata_pelajaran_created_date", columnList = "createdDate"),
+        @Index(name = "idx_mata_pelajaran_modified_date", columnList = "modifiedDate")
 })
 
 public class MataPelajaran {
